@@ -1,0 +1,49 @@
+const fs = require('fs');
+const path = require('path');
+
+const SizePlugin = require('size-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const DefinePlugin = require('webpack').DefinePlugin;
+
+module.exports = {
+	devtool: 'sourcemap',
+	stats: 'errors-only',
+	entry: {
+		'totp-in-a-click': './source/totp-in-a-click.js'
+	},
+	output: {
+		path: path.join(__dirname, 'distribution'),
+		filename: '[name].js'
+	},
+	plugins: [
+		new SizePlugin(),
+		new DefinePlugin({
+			__INJECTIBLE_CODE__: JSON.stringify(fs.readFileSync('./source/injectible-code.js', 'utf-8'))
+		}),
+		new CopyWebpackPlugin([
+			{
+				from: '**/*',
+				context: 'source',
+				ignore: ['*.js']
+			},
+			{
+				from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
+			}
+		])
+	],
+	optimization: {
+		minimizer: [
+			new TerserPlugin({
+				terserOptions: {
+					mangle: false,
+					compress: false,
+					output: {
+						beautify: true,
+						indent_level: 2 // eslint-disable-line camelcase
+					}
+				}
+			})
+		]
+	}
+};
