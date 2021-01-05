@@ -1,4 +1,4 @@
-> Browser extension to generate TOTP
+# Browser extension to generate TOTP
 
 ## Screenshot
 
@@ -6,7 +6,7 @@
 
 ## Features
 
-Generate 6 digits, 30 seconds TOTP when selecting a Base32 secret.
+Generate 6 digits, 30 seconds TOTP when selecting a Base32 secret and copy it to your clipboard.
 
 ### Permissions
 
