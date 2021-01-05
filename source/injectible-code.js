@@ -1,24 +1,11 @@
 function getSelectionAsText() {
 	const selection = document.getSelection();
-	let containerTagName = '';
 
 	if (selection.rangeCount === 0) {
 		return '';
 	}
 
 	const selectionRange = selection.getRangeAt(0); // Only consider the first range
-	const container = selectionRange.commonAncestorContainer;
-
-	// All of text in container element is selected, then use parents tag
-	if (selectionRange.toString().trim() === container.textContent.trim()) {
-		// Handle plain text selections where parent is sometimes 'Node' or 'DocumentFragment'
-		// Ideally, this should not happen, but text selection in browsers is unpredictable
-		if (container instanceof Element) {
-			containerTagName = container.tagName.toLowerCase();
-		} else {
-			containerTagName = 'p';
-		}
-	}
 
 	const fragment = selectionRange.cloneContents();
 	const wrapper = document.createElement('div');
@@ -36,7 +23,7 @@ function getSelectionAsText() {
 		}
 	}
 
-	return wrapper.innerText;
+	return wrapper.textContent;
 }
 
 getSelectionAsText();

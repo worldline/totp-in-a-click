@@ -1,6 +1,6 @@
 /* global __INJECTIBLE_CODE__: readonly */
 
-import totp from "totp-generator"
+import totp from 'totp-generator';
 
 // Action listener to redirect user to source repo
 browser.browserAction.onClicked.addListener(() => {
@@ -11,8 +11,8 @@ browser.browserAction.onClicked.addListener(() => {
 
 // Add context menus for specific actions
 browser.contextMenus.create({
-	id: `generate-totp`,
-	title: `Generate TOTP`,
+	id: 'generate-totp',
+	title: 'Generate TOTP',
 	contexts: ['selection']
 });
 
@@ -26,7 +26,7 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
 	});
 
 	htmlContent = completionData[0] || '';
-	const code = totp(htmlContent.trim())
+	const code = totp(htmlContent.trim());
 
 	const inputElement = document.createElement('textarea');
 	document.body.append(inputElement);
