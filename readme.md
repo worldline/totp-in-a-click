@@ -1,5 +1,10 @@
 # Browser extension to generate TOTP
 
+## Install
+
+* [Firefox](https://addons.mozilla.org/en-US/firefox/addon/totp-in-a-click-public/)
+* [Chrome](https://chrome.google.com/webstore/detail/totp-in-a-click/cdhkohjbbelomjjklfejennombggbbkk)
+
 ## Screenshot
 
 ![screenshot](media/preview.png)
