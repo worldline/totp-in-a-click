@@ -11,7 +11,13 @@
 
 ## Features
 
-Generate 6 digits, 30 seconds TOTP when selecting a Base32 secret and copy it to your clipboard.
+Generate by default 6 digits, 30 seconds TOTP when selecting a Base32 secret and copy it to your clipboard.
+
+You can precise options using the parameter `period`, `algorithm`, `digits` for exemple :
+
+```
+<base32 key>&period=15&algorithm=SHA-256&digits=8
+```
 
 ### Permissions
 
