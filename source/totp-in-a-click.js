@@ -26,7 +26,23 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
 	});
 
 	htmlContent = completionData[0] || '';
-	const code = totp(htmlContent.trim());
+  let selection = htmlContent.trim()
+  let selectionAsList = selection.split('&')
+  let options = {digits: 6, algorithm: 'SHA-1', period: 60}
+  let key = ''
+  for(item in selectionAsList) {
+    if (item.includes("=")) {
+      tempList = item.split("=")
+      if ("period" == tempList[0] || "digits" == tempList[0]) {
+        options[tempList[0]] = parseInt(tempList[1])
+      } else {
+        options[tempList[0]] = tempList[1]
+      }
+    } else {
+      key = item
+    }
+  }
+	const code = totp(key,options);
 
 	const inputElement = document.createElement('textarea');
 	document.body.append(inputElement);
