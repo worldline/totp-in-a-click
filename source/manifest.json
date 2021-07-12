@@ -1,6 +1,6 @@
 {
 	"name": "TOTP in a click",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Browser extension to generate TOTP from a secret Base32 string",
 	"homepage_url": "https://github.com/worldline/totp-in-a-click",
 	"manifest_version": 2,

@@ -25,6 +25,7 @@
 		"extends": "stylelint-config-xo"
 	},
 	"dependencies": {
+		"otpauth-uri-parser": "^1.0.1",
 		"path": "^0.12.7",
 		"totp-generator": "0.0.8",
 		"webext-options-sync": "^0.21.2",
